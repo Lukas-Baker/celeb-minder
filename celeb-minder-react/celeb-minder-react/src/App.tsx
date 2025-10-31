@@ -1,6 +1,6 @@
 import Banner from "./components/Banner";
 import CelebrationForm from "./components/CelebrationForm";
-import UpcomingCelebrations from "./components/UpcomingCelebrations";
+import CelebrationList from "./components/CelebrationList";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
           <CelebrationForm />
         </div>
         <div className="col-8">
-          <UpcomingCelebrations />
+          <CelebrationList />
         </div>
       </div>
     </div>

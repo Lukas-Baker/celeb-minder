@@ -1,0 +1,67 @@
+import type { ICelebration } from "../types/ICelebration";
+import { CelebrationType } from "../types/CelebrationTypeEnum";
+import { Repeat } from "../types/RepeatEnum";
+import Celebration from "./Celebration";
+
+function CelebrationList() {
+    // Mock of celebrations
+    const celebrations: ICelebration[] = [
+        {
+            Id: 1,
+            Who: "Míša",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2025, 10, 17),
+            Repeat: Repeat.Yearly,
+            Note: "Never forget this one!"
+        },
+        {
+            Id: 2,
+            Who: "Já + Míša",
+            CelebrationType: CelebrationType.Anniversary,
+            When: new Date(2025, 10, 17),
+            Repeat: Repeat.Yearly,
+            Note: "Never forget this one!"
+        },
+        {
+            Id: 3,
+            Who: "Mamka",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2026, 6, 20),
+            Repeat: Repeat.Yearly,
+        },
+        {
+            Id: 4,
+            Who: "Táta",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2025, 10, 14),
+            Repeat: Repeat.Yearly,
+        },
+        {
+            Id: 5,
+            Who: "Brácha",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2026, 2, 20),
+            Repeat: Repeat.Yearly,
+        },
+        {
+            Id: 6,
+            Who: "Míša",
+            CelebrationType: CelebrationType.NameDay,
+            When: new Date(2026, 9, 19),
+            Repeat: Repeat.Yearly,
+        },
+    ];
+
+    return (
+        <>
+            <h2 className="text-center">Upcoming celebrations</h2>
+            <div>
+                { celebrations.map((c) => (
+                    <Celebration celebration={c} />
+                ))}
+            </div>
+        </>
+    )
+}
+
+export default CelebrationList;
