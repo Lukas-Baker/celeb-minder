@@ -1,6 +1,8 @@
 function Banner() {
     return(
-        <h1>Celebminder</h1>
+        <div className="pt-4 pb-4">
+            <h1 className="text-center">Celebminder</h1>
+        </div>
     );
 }
 
