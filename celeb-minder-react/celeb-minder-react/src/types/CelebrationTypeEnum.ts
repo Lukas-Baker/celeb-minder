@@ -6,3 +6,10 @@ export const CelebrationType = {
 } as const;
 
 export type CelebrationType = typeof CelebrationType[keyof typeof CelebrationType];
+
+// gets name value of the enum
+export function getCelebrationName(value: CelebrationType): string {
+  const entry = Object.entries(CelebrationType)
+    .find(([, v]) => v === value);
+  return entry ? entry[0] : '';
+}

@@ -2,6 +2,7 @@ import type { ICelebration } from "../types/ICelebration";
 import { CelebrationType } from "../types/CelebrationTypeEnum";
 import { Repeat } from "../types/RepeatEnum";
 import Celebration from "./Celebration";
+import styles from "./CelebrationList.module.css";
 
 function CelebrationList() {
     // Mock of celebrations
@@ -55,9 +56,9 @@ function CelebrationList() {
     return (
         <>
             <h2 className="text-center">Upcoming celebrations</h2>
-            <div>
+            <div className={styles.CelebrationList}>
                 { celebrations.map((c) => (
-                    <Celebration celebration={c} />
+                    <Celebration celebration={c} key={c.Id} />
                 ))}
             </div>
         </>
