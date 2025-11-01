@@ -1,7 +1,24 @@
+@background-danger-color: #EB5F5B;
+@background-warning-color: #E8EB5B;
+@background-normal-color: #F5F5F5;
+
 .celebration {
     max-width: 400px;
-    margin: 0px auto;
+    margin: 8px auto;
     padding: 5px 0px;
+    background-color: @background-normal-color;
+    border: 1px solid darken(@background-normal-color, 15%);
+    border-radius: 8px;
+}
+
+.celebrationDanger {
+    background-color: @background-danger-color;
+    border-color: darken(@background-danger-color, 15%);
+}
+
+.celebrationWarning {
+    background-color: @background-warning-color;
+    border-color: darken(@background-warning-color, 15%);
 }
 
 .celebrationFooter {

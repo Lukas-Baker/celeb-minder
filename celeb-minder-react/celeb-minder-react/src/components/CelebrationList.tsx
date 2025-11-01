@@ -8,27 +8,12 @@ function CelebrationList() {
     // Mock of celebrations
     const celebrations: ICelebration[] = [
         {
-            Id: 1,
-            Who: "Míša",
+            Id: 0,
+            Who: "Jan Novák",
             CelebrationType: CelebrationType.Birthday,
-            When: new Date(2025, 10, 17),
+            When: new Date(2025, 10, 5),
             Repeat: Repeat.Yearly,
             Note: "Never forget this one!"
-        },
-        {
-            Id: 2,
-            Who: "Já + Míša",
-            CelebrationType: CelebrationType.Anniversary,
-            When: new Date(2025, 10, 17),
-            Repeat: Repeat.Yearly,
-            Note: "Never forget this one!"
-        },
-        {
-            Id: 3,
-            Who: "Mamka",
-            CelebrationType: CelebrationType.Birthday,
-            When: new Date(2026, 6, 20),
-            Repeat: Repeat.Yearly,
         },
         {
             Id: 4,
@@ -38,10 +23,32 @@ function CelebrationList() {
             Repeat: Repeat.Yearly,
         },
         {
+            Id: 1,
+            Who: "Míša",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2025, 10, 17),
+            Repeat: Repeat.Yearly,
+            Note: "Never forget this one!"
+        },
+        {
             Id: 5,
             Who: "Brácha",
             CelebrationType: CelebrationType.Birthday,
             When: new Date(2026, 2, 20),
+            Repeat: Repeat.Yearly,
+        },
+        {
+            Id: 3,
+            Who: "Mamka",
+            CelebrationType: CelebrationType.Birthday,
+            When: new Date(2026, 6, 20),
+            Repeat: Repeat.Yearly,
+        },
+        {
+            Id: 2,
+            Who: "Já + Míša",
+            CelebrationType: CelebrationType.Anniversary,
+            When: new Date(2026, 9, 7),
             Repeat: Repeat.Yearly,
         },
         {
@@ -56,7 +63,7 @@ function CelebrationList() {
     return (
         <>
             <h2 className="text-center">Upcoming celebrations</h2>
-            <div className={styles.CelebrationList}>
+            <div className={styles.celebrationList}>
                 { celebrations.map((c) => (
                     <Celebration celebration={c} key={c.Id} />
                 ))}
