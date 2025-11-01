@@ -1,5 +1,5 @@
 import type { ICelebration } from "../types/ICelebration";
-import styles from "./Celebration.module.css";
+import styles from "./Celebration.module.less";
 import { getCelebrationName } from "../types/CelebrationTypeEnum";
 
 interface Props {

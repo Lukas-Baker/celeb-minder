@@ -2,7 +2,7 @@ import type { ICelebration } from "../types/ICelebration";
 import { CelebrationType } from "../types/CelebrationTypeEnum";
 import { Repeat } from "../types/RepeatEnum";
 import Celebration from "./Celebration";
-import styles from "./CelebrationList.module.css";
+import styles from "./CelebrationList.module.less";
 
 function CelebrationList() {
     // Mock of celebrations
