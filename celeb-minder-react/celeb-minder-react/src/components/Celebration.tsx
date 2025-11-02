@@ -21,8 +21,10 @@ function Celebration({celebration}: Props) {
         <div className={`${styles.celebration} ${getUrgencyClass(celebration.When)}`}>
             <div className="row">
                 <div className="col-8">
-                    <div>{celebration.Who}</div>
-                    <div>{getCelebrationName(celebration.CelebrationType)}</div>
+                    <div className={styles.topLeftSection}>
+                        <div className={styles.who}>{celebration.Who}</div>
+                        <div>{getCelebrationName(celebration.CelebrationType)}</div>
+                    </div>
                 </div>
                 <div className="col-4">
                     TBD LP Icons
@@ -30,7 +32,9 @@ function Celebration({celebration}: Props) {
             </div>
             <div className={`row ${styles.celebrationFooter}`}>
                 <div className="col-12">
-                    {celebration.When.toLocaleDateString('cs-CZ')}
+                    <div className={styles.bottomLeftSection}>
+                        {celebration.When.toLocaleDateString('cs-CZ')}
+                    </div>
                 </div>
             </div>
         </div>
