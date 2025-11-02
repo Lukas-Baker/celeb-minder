@@ -2,6 +2,8 @@ import type { ICelebration } from "../types/ICelebration";
 import styles from "./Celebration.module.less";
 import { getCelebrationName } from "../types/CelebrationTypeEnum";
 import { isWithinFourWeeks, isWithingAWeek } from "../helpers/dateHelpers";
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 
 interface Props {
     celebration: ICelebration,
@@ -26,8 +28,11 @@ function Celebration({celebration}: Props) {
                         <div>{getCelebrationName(celebration.CelebrationType)}</div>
                     </div>
                 </div>
-                <div className="col-4">
-                    TBD LP Icons
+                <div className="col-4 text-end">
+                    <div className={styles.icons}>
+                        <div className={styles.icon}><FaEdit className={styles.iconSvg} /></div>
+                        <div className={styles.icon}><FaTrash className={styles.iconSvg} /></div>
+                    </div>
                 </div>
             </div>
             <div className={`row ${styles.celebrationFooter}`}>

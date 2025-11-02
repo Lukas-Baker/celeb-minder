@@ -2,20 +2,43 @@
 @background-warning-color: #E8EB5B;
 @background-normal-color: #F5F5F5;
 
+@spacing: 5px;
+
 .celebration {
     max-width: 400px;
     margin: 8px auto;
-    padding: 5px 0px;
+    padding: @spacing 0px;
     background-color: @background-normal-color;
     border: 1px solid darken(@background-normal-color, 15%);
     border-radius: 6px;
 
     .topLeftSection, .bottomLeftSection {
-        padding: 0px 5px;
+        padding: 0px @spacing;
     }
 
     .who {
         font-size: 20px;
+        font-weight: 600;
+    }
+
+    .icons {
+        margin-top: @spacing;
+        padding: 0px @spacing;
+        .icon {
+            display: inline-block;
+            cursor: pointer;
+            color: lighten(#000, 40%);
+            padding: 0px @spacing;
+
+            :hover {
+                color: lighten(#000, 15%);
+            }
+
+            .iconSvg {
+                height: 30px;
+                width: 30px;
+            }
+        }
     }
 }
 
