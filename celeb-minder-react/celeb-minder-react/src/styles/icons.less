@@ -1,0 +1,22 @@
+@import "./variables.less";
+
+.icons {
+    margin-top: @spacing;
+    padding: 0px @spacing;
+}
+
+.icon {
+    display: inline-block;
+    cursor: pointer;
+    color: lighten(#000, 40%);
+    padding: 0px @spacing;
+
+    :hover {
+        color: lighten(#000, 15%);
+    }
+
+    .iconSvg {
+        height: 30px;
+        width: 30px;
+    }
+}

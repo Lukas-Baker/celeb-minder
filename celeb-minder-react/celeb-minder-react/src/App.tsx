@@ -1,6 +1,7 @@
 import Banner from "./components/Banner";
 import CelebrationForm from "./components/CelebrationForm";
 import CelebrationList from "./components/CelebrationList";
+import "./styles/icons.less";
 
 function App() {
   return (

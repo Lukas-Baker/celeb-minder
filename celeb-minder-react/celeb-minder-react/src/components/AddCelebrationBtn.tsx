@@ -1,6 +1,8 @@
+import { FaPlus } from 'react-icons/fa';
+
 function AddCelebrationBtn() {
     return (
-        <input value="Add" type="submit" className="btn btn-primary" />
+        <div className="icon"><FaPlus className="iconSvg" /></div>
     );
 }
 

@@ -29,9 +29,9 @@ function Celebration({celebration}: Props) {
                     </div>
                 </div>
                 <div className="col-4 text-end">
-                    <div className={styles.icons}>
-                        <div className={styles.icon}><FaEdit className={styles.iconSvg} /></div>
-                        <div className={styles.icon}><FaTrash className={styles.iconSvg} /></div>
+                    <div className="icons">
+                        <div className="icon"><FaEdit className="iconSvg" /></div>
+                        <div className="icon"><FaTrash className="iconSvg" /></div>
                     </div>
                 </div>
             </div>

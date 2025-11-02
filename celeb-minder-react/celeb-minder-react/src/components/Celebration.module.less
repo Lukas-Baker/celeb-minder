@@ -1,8 +1,8 @@
+@import "../styles/variables.less";
+
 @background-danger-color: #EB5F5B;
 @background-warning-color: #E8EB5B;
 @background-normal-color: #F5F5F5;
-
-@spacing: 5px;
 
 .celebration {
     max-width: 500px;
@@ -19,26 +19,6 @@
     .who {
         font-size: 20px;
         font-weight: 600;
-    }
-
-    .icons {
-        margin-top: @spacing;
-        padding: 0px @spacing;
-        .icon {
-            display: inline-block;
-            cursor: pointer;
-            color: lighten(#000, 40%);
-            padding: 0px @spacing;
-
-            :hover {
-                color: lighten(#000, 15%);
-            }
-
-            .iconSvg {
-                height: 30px;
-                width: 30px;
-            }
-        }
     }
 }
 
