@@ -1,6 +1,7 @@
 import Banner from "./components/Banner";
 import CelebrationForm from "./components/CelebrationForm";
 import CelebrationList from "./components/CelebrationList";
+import Footer from "./components/Footer";
 import "./styles/icons.less";
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
         <div className="col-12 col-lg-8">
           <CelebrationList />
         </div>
+      </div>
+      <div className="row">
+        <Footer />
       </div>
     </div>
   );
