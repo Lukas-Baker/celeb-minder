@@ -1,10 +1,11 @@
 import { CelebrationType } from "../types/CelebrationTypeEnum";
 import { Repeat } from "../types/RepeatEnum";
 import AddCelebrationBtn from "./AddCelebrationBtn";
+import styles from "./CelebrationForm.module.less";
 
 function CelebrationForm() {
     return (
-        <div className="mb-4">
+        <div className={`mb-4 ${styles.form}`}>
             <h2 className="text-center">New celebration</h2>
             <form>
                 <div className="mb-3">

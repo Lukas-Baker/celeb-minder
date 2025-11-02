@@ -1,6 +1,8 @@
+import styles from "./Footer.module.less"
+
 function Footer() {
     return (
-        <footer>
+        <footer className={styles.footer}>
             CELEBminder by Lukas Baker
         </footer>
     );

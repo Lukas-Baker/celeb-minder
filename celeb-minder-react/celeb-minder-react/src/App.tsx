@@ -2,17 +2,20 @@ import Banner from "./components/Banner";
 import CelebrationForm from "./components/CelebrationForm";
 import CelebrationList from "./components/CelebrationList";
 import Footer from "./components/Footer";
+import "./styles/global.less";
 import "./styles/icons.less";
 
 function App() {
   return (
-    <div className="container">
-      <Banner />
+    <div id="Celebminder" className="container">
       <div className="row">
-        <div className="col-12 col-lg-4">
+        <Banner />
+      </div>
+      <div className="row">
+        <div className="col-12 col-lg-6">
           <CelebrationForm />
         </div>
-        <div className="col-12 col-lg-8">
+        <div className="col-12 col-lg-6">
           <CelebrationList />
         </div>
       </div>
