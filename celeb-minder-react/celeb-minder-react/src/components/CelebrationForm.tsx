@@ -4,7 +4,7 @@ import AddCelebrationBtn from "./AddCelebrationBtn";
 
 function CelebrationForm() {
     return (
-        <div>
+        <div className="mb-4">
             <h2 className="text-center">New celebration</h2>
             <form>
                 <div className="mb-3">
