@@ -1,11 +1,22 @@
-import type { CelebrationType } from "./CelebrationTypeEnum";
-import type { Repeat } from "./RepeatEnum";
+import { CelebrationType } from "./CelebrationTypeEnum";
+import { Repeat } from "./RepeatEnum";
 
 export interface ICelebration {
     Id: number;
     Who: string;
-    CelebrationType: CelebrationType;
+    CelebrationType: number;
     When: Date;
-    Repeat: Repeat;
+    Repeat: number;
     Note?: string;
 }
+
+const NewCelebration: ICelebration = {
+    Id: 0,
+    Who: "",
+    CelebrationType: CelebrationType.Birthday,
+    When: new Date(),
+    Repeat: Repeat.Never,
+    Note: ""
+};
+
+export {NewCelebration};
