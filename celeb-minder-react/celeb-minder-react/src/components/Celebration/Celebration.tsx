@@ -1,7 +1,7 @@
-import type { ICelebration } from "../types/ICelebration";
+import type { ICelebration } from "../../types/ICelebration";
 import styles from "./Celebration.module.less";
-import { getCelebrationName } from "../types/CelebrationTypeEnum";
-import { isWithinFourWeeks, isWithingAWeek } from "../helpers/dateHelpers";
+import { getCelebrationName } from "../../types/CelebrationTypeEnum";
+import { isWithinFourWeeks, isWithingAWeek } from "../../helpers/dateHelpers";
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 

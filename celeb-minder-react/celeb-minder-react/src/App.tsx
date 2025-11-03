@@ -1,7 +1,7 @@
-import Banner from "./components/Banner";
-import CelebrationForm from "./components/CelebrationForm";
-import CelebrationList from "./components/CelebrationList";
-import Footer from "./components/Footer";
+import Banner from "./components/Banner/Banner";
+import CelebrationForm from "./components/CelebrationForm/CelebrationForm";
+import CelebrationList from "./components/CelebrationList/CelebrationList";
+import Footer from "./components/Footer/Footer";
 import "./styles/global.less";
 import "./styles/icons.less";
 

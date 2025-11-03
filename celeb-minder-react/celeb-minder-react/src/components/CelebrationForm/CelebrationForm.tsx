@@ -1,6 +1,6 @@
-import { CelebrationType } from "../types/CelebrationTypeEnum";
-import { Repeat } from "../types/RepeatEnum";
-import AddCelebrationBtn from "./AddCelebrationBtn";
+import { CelebrationType } from "../../types/CelebrationTypeEnum";
+import { Repeat } from "../../types/RepeatEnum";
+import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
 
 function CelebrationForm() {
