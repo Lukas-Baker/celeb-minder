@@ -6,9 +6,13 @@ interface CelebrationProps {
 }
 
 const AddCelebrationBtn : React.FC<CelebrationProps> = ({celebration}) => {
-    console.log(celebration);
+    function onAddBtnClick(): void {
+      // TBD LP: Add it to the API
+      console.log(celebration);
+    }
+
     return (
-        <div className="icon"><FaPlus className="iconSvg" /></div>
+        <div onClick={onAddBtnClick} className="icon"><FaPlus className="iconSvg" /></div>
     );
 }
 
