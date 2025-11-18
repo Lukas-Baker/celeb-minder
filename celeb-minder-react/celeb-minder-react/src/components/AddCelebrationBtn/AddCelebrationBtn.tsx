@@ -1,11 +1,11 @@
 import { FaPlus } from 'react-icons/fa';
 import type { ICelebration } from '../../types/ICelebration';
 
-interface CelebrationProps {
+interface AddCelebrationBtnProps {
   celebration: ICelebration;
 }
 
-const AddCelebrationBtn : React.FC<CelebrationProps> = ({celebration}) => {
+const AddCelebrationBtn : React.FC<AddCelebrationBtnProps> = ({celebration}) => {
     function onAddBtnClick(): void {
       // TBD LP: Add it to the API
       console.log(celebration);

@@ -8,7 +8,7 @@ function CelebrationList() {
     // Mock of celebrations
     const celebrations: ICelebration[] = [
         {
-            Id: 0,
+            Id: 7,
             Who: "Jan Novák",
             CelebrationType: CelebrationType.Birthday,
             When: new Date(2025, 10, 5),
