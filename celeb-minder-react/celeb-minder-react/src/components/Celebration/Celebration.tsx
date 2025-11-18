@@ -1,7 +1,7 @@
 import type { ICelebration } from "../../types/ICelebration";
 import styles from "./Celebration.module.less";
 import { getCelebrationName } from "../../types/CelebrationTypeEnum";
-import { isWithinFourWeeks, isWithingAWeek } from "../../helpers/dateHelpers";
+import { dateToString, isWithinFourWeeks, isWithingAWeek } from "../../helpers/dateHelpers";
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 
@@ -38,7 +38,7 @@ function Celebration({celebration}: Props) {
             <div className={`row ${styles.celebrationFooter}`}>
                 <div className="col-12">
                     <div className={styles.bottomLeftSection}>
-                        {celebration.When.toLocaleDateString('cs-CZ')}
+                        {dateToString(celebration.When)}
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { dateToString } from "../../helpers/dateHelpers";
 import { CelebrationType } from "../../types/CelebrationTypeEnum";
 import type { ICelebration } from "../../types/ICelebration";
 import { Repeat } from "../../types/RepeatEnum";
@@ -33,7 +34,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputWhen" className="form-label">When</label>
-                    <input value={celebration.When.toLocaleDateString()} onChange={e => setCelebration({ ...celebration, When: new Date(e.target.value) })}
+                    <input value={dateToString(celebration.When)} onChange={e => setCelebration({ ...celebration, When: new Date(e.target.value) })}
                         id="inputWhen" type="date" className="form-control" />
                 </div>
                 <div className="mb-3">

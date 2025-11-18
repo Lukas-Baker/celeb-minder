@@ -17,3 +17,7 @@ export const isWithinFourWeeks = (dateToCheck: Date): boolean => {
     const fourWeekMs = 4 * 7 * 24 * 60 * 60 * 1000;
     return isWithinMs(dateToCheck, fourWeekMs);
 }
+
+export const dateToString = (date: Date): string => {
+    return date.toLocaleDateString('cs-CZ');
+}
