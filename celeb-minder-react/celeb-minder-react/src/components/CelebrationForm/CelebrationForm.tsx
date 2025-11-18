@@ -10,9 +10,10 @@ import { dateFormat } from "../../helpers/dateHelpers";
 interface CelebrationFormProps {
   celebration: ICelebration;
   setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
+  setCelebrations: React.Dispatch<React.SetStateAction<ICelebration[]>>;
 }
 
-const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration}) => {
+const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration, setCelebrations}) => {
     return (
         <div className={`mb-4 ${styles.form}`}>
             <h2 className="text-center">New celebration</h2>
@@ -56,7 +57,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
                         id="noteInput" className="form-control" />
                 </div>
                 <div className="text-center">
-                    <AddCelebrationBtn celebration={celebration} />
+                    <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} />
                 </div>
             </form>
         </div>
