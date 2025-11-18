@@ -1,9 +1,11 @@
-import { dateToString } from "../../helpers/dateHelpers";
+import DatePicker from "react-datepicker";
 import { CelebrationType } from "../../types/CelebrationTypeEnum";
 import type { ICelebration } from "../../types/ICelebration";
 import { Repeat } from "../../types/RepeatEnum";
 import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
+import "react-datepicker/dist/react-datepicker.css";
+import { dateFormat } from "../../helpers/dateHelpers";
 
 interface CelebrationFormProps {
   celebration: ICelebration;
@@ -34,8 +36,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputWhen" className="form-label">When</label>
-                    <input value={dateToString(celebration.When)} onChange={e => setCelebration({ ...celebration, When: new Date(e.target.value) })}
-                        id="inputWhen" type="date" className="form-control" />
+                    <DatePicker dateFormat={dateFormat} id="inputWhen" className="form-control" selected={celebration.When} onChange={(date) => setCelebration({ ...celebration, When: date ?? new Date() })} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputRepeat" className="form-label">Repeat</label>
