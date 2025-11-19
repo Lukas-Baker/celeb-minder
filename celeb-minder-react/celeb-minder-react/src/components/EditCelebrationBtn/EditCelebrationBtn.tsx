@@ -3,13 +3,15 @@ import type { ICelebration } from "../../types/ICelebration";
 
 interface EditCelebrationBtnProps {
     celebration: ICelebration;
+    setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>,
+    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
-const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration}) => {
+const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration, setCelebration, setIsEdit}) => {
 
     function onEditBtnClick(): void {
-        // TBD LP: Delete it
-        console.log(celebration);
+        setCelebration(celebration);
+        setIsEdit(true);
     }
 
     return (

@@ -6,17 +6,37 @@ import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
 import "react-datepicker/dist/react-datepicker.css";
 import { dateFormat } from "../../helpers/dateHelpers";
+import SaveCelebrationBtn from "../SaveCelebrationBtn/SaveCelebrationBtn";
+import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
 
 interface CelebrationFormProps {
+  isEdit: boolean
   celebration: ICelebration;
   setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
   setCelebrations: React.Dispatch<React.SetStateAction<ICelebration[]>>;
+  setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration, setCelebrations}) => {
+const CelebrationForm: React.FC<CelebrationFormProps> = ({isEdit, celebration, setCelebration, setCelebrations, setIsEdit}) => {
+
+    let formButtons;
+    if (isEdit) {
+        formButtons = (
+            <>
+            <SaveCelebrationBtn celebration={celebration}
+                                setCelebrations={setCelebrations}
+                                setCelebration={setCelebration}
+                                setIsEdit={setIsEdit} />
+            <CancelEditCelebrationBtn setCelebration={setCelebration} setIsEdit={setIsEdit} />
+            </>
+        )
+    } else {
+        formButtons = <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} setCelebration={setCelebration} />
+    }
+
     return (
         <div className={`mb-4 ${styles.form}`}>
-            <h2 className="text-center">New celebration</h2>
+            <h2 className="text-center">{isEdit ? "Edit celebration" : "New celebration"}</h2>
             <form>
                 <div className="mb-3">
                     <label htmlFor="inputWho" className="form-label">Who</label>
@@ -57,7 +77,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
                         id="noteInput" className="form-control" />
                 </div>
                 <div className="text-center">
-                    <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} />
+                    {formButtons}
                 </div>
             </form>
         </div>

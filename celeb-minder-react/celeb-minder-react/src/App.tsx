@@ -8,9 +8,10 @@ import "./styles/icons.less";
 import { NewCelebration, type ICelebration } from "./types/ICelebration";
 import { CelebrationType } from "./types/CelebrationTypeEnum";
 import { Repeat } from "./types/RepeatEnum";
+import { sortCelebrationsByDate } from "./helpers/sortHelpers";
 
 function App() {
-    const celebrationsMock: ICelebration[] = [
+  const celebrationsMock: ICelebration[] = [
       {
           Id: 7,
           Who: "Jan Novák",
@@ -64,8 +65,9 @@ function App() {
       },
   ];
 
+  const [isEdit, setIsEdit] = useState<boolean>(false);
   const [celebration, setCelebration] = useState<ICelebration>(NewCelebration);
-  const [celebrations, setCelebrations] = useState<ICelebration[]>(celebrationsMock);
+  const [celebrations, setCelebrations] = useState<ICelebration[]>(sortCelebrationsByDate(celebrationsMock));
 
   return (
     <div id="Celebminder" className="container">
@@ -74,10 +76,17 @@ function App() {
       </div>
       <div className="row">
         <div className="col-12 col-lg-6">
-          <CelebrationForm celebration={celebration} setCelebration={setCelebration} setCelebrations={setCelebrations} />
+          <CelebrationForm celebration={celebration}
+                           setCelebration={setCelebration}
+                           setCelebrations={setCelebrations}
+                           isEdit={isEdit}
+                           setIsEdit={setIsEdit} />
         </div>
         <div className="col-12 col-lg-6">
-          <CelebrationList celebrations={celebrations} />
+          <CelebrationList celebrations={celebrations}
+                           setCelebration={setCelebration}
+                           setIsEdit={setIsEdit}
+                           setCelebrations={setCelebrations} />
         </div>
       </div>
       <div className="row">
