@@ -8,26 +8,26 @@ import "react-datepicker/dist/react-datepicker.css";
 import { dateFormat } from "../../helpers/dateHelpers";
 import SaveCelebrationBtn from "../SaveCelebrationBtn/SaveCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
+import celebrationStateContext from "../../contexts/CelebrationStateContext";
+import { useContext } from "react";
 
 interface CelebrationFormProps {
-  isEdit: boolean
   celebration: ICelebration;
   setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
   setCelebrations: React.Dispatch<React.SetStateAction<ICelebration[]>>;
-  setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CelebrationForm: React.FC<CelebrationFormProps> = ({isEdit, celebration, setCelebration, setCelebrations, setIsEdit}) => {
+const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration, setCelebrations}) => {
+    const celebrationContext = useContext(celebrationStateContext);
 
     let formButtons;
-    if (isEdit) {
+    if (celebrationContext.isEdit) {
         formButtons = (
             <>
             <SaveCelebrationBtn celebration={celebration}
                                 setCelebrations={setCelebrations}
-                                setCelebration={setCelebration}
-                                setIsEdit={setIsEdit} />
-            <CancelEditCelebrationBtn setCelebration={setCelebration} setIsEdit={setIsEdit} />
+                                setCelebration={setCelebration} />
+            <CancelEditCelebrationBtn setCelebration={setCelebration} />
             </>
         )
     } else {
@@ -36,7 +36,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({isEdit, celebration, s
 
     return (
         <div className={`mb-4 ${styles.form}`}>
-            <h2 className="text-center">{isEdit ? "Edit celebration" : "New celebration"}</h2>
+            <h2 className="text-center">{celebrationContext.isEdit ? "Edit celebration" : "New celebration"}</h2>
             <form>
                 <div className="mb-3">
                     <label htmlFor="inputWho" className="form-label">Who</label>

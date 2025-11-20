@@ -9,6 +9,7 @@ import { NewCelebration, type ICelebration } from "./types/ICelebration";
 import { CelebrationType } from "./types/CelebrationTypeEnum";
 import { Repeat } from "./types/RepeatEnum";
 import { sortCelebrationsByDate } from "./helpers/sortHelpers";
+import CelebrationStateContext from "./contexts/CelebrationStateContext";
 
 function App() {
   const celebrationsMock: ICelebration[] = [
@@ -75,19 +76,18 @@ function App() {
         <Banner />
       </div>
       <div className="row">
-        <div className="col-12 col-lg-6">
-          <CelebrationForm celebration={celebration}
-                           setCelebration={setCelebration}
-                           setCelebrations={setCelebrations}
-                           isEdit={isEdit}
-                           setIsEdit={setIsEdit} />
-        </div>
-        <div className="col-12 col-lg-6">
-          <CelebrationList celebrations={celebrations}
-                           setCelebration={setCelebration}
-                           setIsEdit={setIsEdit}
-                           setCelebrations={setCelebrations} />
-        </div>
+        <CelebrationStateContext.Provider value={{isEdit, setIsEdit}}>
+          <div className="col-12 col-lg-6">
+            <CelebrationForm celebration={celebration}
+                            setCelebration={setCelebration}
+                            setCelebrations={setCelebrations} />
+          </div>
+          <div className="col-12 col-lg-6">
+            <CelebrationList celebrations={celebrations}
+                            setCelebration={setCelebration}
+                            setCelebrations={setCelebrations} />
+          </div>
+        </CelebrationStateContext.Provider>
       </div>
       <div className="row">
         <Footer />
