@@ -1,15 +1,17 @@
 import { FaTrash } from "react-icons/fa";
 import type { ICelebration } from "../../types/ICelebration";
-import type { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
+import celebrationStateContext from "../../contexts/CelebrationStateContext";
 
 interface DeleteCelebrationBtnProps {
     celebration: ICelebration,
-    setCelebrations: Dispatch<SetStateAction<ICelebration[]>>,
 }
 
-const DeleteCelebrationBtn : React.FC<DeleteCelebrationBtnProps> = ({celebration, setCelebrations}) => {
+const DeleteCelebrationBtn : React.FC<DeleteCelebrationBtnProps> = ({celebration}) => {
+    const celebrationContext = useContext(celebrationStateContext);
+
     function onDeleteBtnClick(): void {
-        setCelebrations(celebrations => celebrations.filter(c => c.Id !== celebration.Id));
+        celebrationContext.deleteCelebration(celebration);
     }
 
     return (

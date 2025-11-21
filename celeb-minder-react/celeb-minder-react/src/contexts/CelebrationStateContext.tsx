@@ -3,8 +3,11 @@ import type { ICelebration } from "../types/ICelebration";
 
 type CelebrationContextInterface = {
     isEdit: boolean;
-    setToEditMode: (celebration: ICelebration) => void;
+    loadCelebrationToForm: (celebration: ICelebration) => void;
     setToCreateMode: () => void;
+    addCelebration: (newCelebration: ICelebration) => void;
+    editCelebration: (editedCelebration: ICelebration) => void;
+    deleteCelebration: (celebrationToDelete: ICelebration) => void;
 }
 
 function throwNoProviderError() {
@@ -13,8 +16,11 @@ function throwNoProviderError() {
 
 const celebrationStateContext = createContext<CelebrationContextInterface>({
     isEdit: false,
-    setToEditMode: () => throwNoProviderError(),
+    loadCelebrationToForm: () => throwNoProviderError(),
     setToCreateMode: () => throwNoProviderError(),
+    addCelebration: () => throwNoProviderError(),
+    editCelebration: () => throwNoProviderError(),
+    deleteCelebration: () => throwNoProviderError(),
 });
 
 export default celebrationStateContext;

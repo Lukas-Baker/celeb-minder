@@ -14,23 +14,21 @@ import { useContext } from "react";
 interface CelebrationFormProps {
   celebration: ICelebration;
   setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
-  setCelebrations: React.Dispatch<React.SetStateAction<ICelebration[]>>;
 }
 
-const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration, setCelebrations}) => {
+const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration}) => {
     const celebrationContext = useContext(celebrationStateContext);
 
     let formButtons;
     if (celebrationContext.isEdit) {
         formButtons = (
             <>
-            <SaveCelebrationBtn celebration={celebration}
-                                setCelebrations={setCelebrations} />
+            <SaveCelebrationBtn celebration={celebration} />
             <CancelEditCelebrationBtn />
             </>
         )
     } else {
-        formButtons = <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} />
+        formButtons = <AddCelebrationBtn celebration={celebration} />
     }
 
     return (

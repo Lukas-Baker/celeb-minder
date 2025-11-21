@@ -4,15 +4,12 @@ import { getCelebrationName } from "../../types/CelebrationTypeEnum";
 import { dateToString, isWithinFourWeeks, isWithingAWeek } from "../../helpers/dateHelpers";
 import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import DeleteCelebrationBtn from "../DeleteCelebrationBtn/DeleteCelebrationBtn";
-import type { SetStateAction } from "react";
 
 interface Props {
     celebration: ICelebration,
-    setCelebration: React.Dispatch<SetStateAction<ICelebration>>,
-    setCelebrations: React.Dispatch<SetStateAction<ICelebration[]>>,
 }
 
-function Celebration({celebration, setCelebration, setCelebrations}: Props) {
+function Celebration({celebration}: Props) {
     function getUrgencyClass(date: Date): string {
         if (isWithingAWeek(date)) {
             return styles.celebrationDanger;
@@ -33,8 +30,8 @@ function Celebration({celebration, setCelebration, setCelebrations}: Props) {
                 </div>
                 <div className="col-4 text-end">
                     <div className="icons">
-                        <EditCelebrationBtn celebration={celebration} setCelebration={setCelebration} />
-                        <DeleteCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} />
+                        <EditCelebrationBtn celebration={celebration} />
+                        <DeleteCelebrationBtn celebration={celebration} />
                     </div>
                 </div>
             </div>

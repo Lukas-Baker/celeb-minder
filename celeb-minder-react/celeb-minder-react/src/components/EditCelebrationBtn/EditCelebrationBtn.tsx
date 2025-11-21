@@ -5,14 +5,13 @@ import celebrationStateContext from "../../contexts/CelebrationStateContext";
 
 interface EditCelebrationBtnProps {
     celebration: ICelebration;
-    setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>,
 }
 
 const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration}) => {
     const celebrationContext = useContext(celebrationStateContext);
 
     function onEditBtnClick(): void {
-        celebrationContext.setToEditMode(celebration);
+        celebrationContext.loadCelebrationToForm(celebration);
     }
 
     return (

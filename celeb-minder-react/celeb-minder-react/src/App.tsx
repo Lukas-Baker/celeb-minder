@@ -75,9 +75,29 @@ function App() {
     setIsEdit(false);
   }
 
-  const setToEditMode = (editedCelebration: ICelebration) => {
+  const loadCelebrationToForm = (editedCelebration: ICelebration) => {
     setCelebration(editedCelebration);
     setIsEdit(true);
+  }
+
+  const addCelebration = (newCelebration: ICelebration) => {
+      setCelebrations((celebrations) => {
+        // TBD LP: Id generation with API should be done differently
+        celebration.Id = celebrations.length !== 0 ? Math.max(...celebrations.map(c => c.Id)) + 1 : 1;
+        const newCelebrations = [...celebrations, newCelebration];
+        return sortCelebrationsByDate(newCelebrations);
+      });
+  }
+
+  const editCelebration = (editedCelebration: ICelebration) => {
+    setCelebrations(celebrations => {
+        const newCelebrations = celebrations.map(c => c.Id == celebration.Id ? editedCelebration : c);
+        return sortCelebrationsByDate(newCelebrations);
+    });
+  }
+
+  const deleteCelebration = (celebrationToDelete: ICelebration) => {
+    setCelebrations(celebrations => celebrations.filter(c => c.Id !== celebrationToDelete.Id));
   }
 
   return (
@@ -86,16 +106,12 @@ function App() {
         <Banner />
       </div>
       <div className="row">
-        <CelebrationStateContext.Provider value={{isEdit, setToEditMode, setToCreateMode}}>
+        <CelebrationStateContext.Provider value={{isEdit, loadCelebrationToForm: loadCelebrationToForm, setToCreateMode, addCelebration, editCelebration, deleteCelebration}}>
           <div className="col-12 col-lg-6">
-            <CelebrationForm celebration={celebration}
-                            setCelebration={setCelebration}
-                            setCelebrations={setCelebrations} />
+            <CelebrationForm celebration={celebration} setCelebration={setCelebration} />
           </div>
           <div className="col-12 col-lg-6">
-            <CelebrationList celebrations={celebrations}
-                            setCelebration={setCelebration}
-                            setCelebrations={setCelebrations} />
+            <CelebrationList celebrations={celebrations} />
           </div>
         </CelebrationStateContext.Provider>
       </div>
