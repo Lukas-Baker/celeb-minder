@@ -10,7 +10,7 @@ export interface ICelebration {
     Note?: string;
 }
 
-const NewCelebration: ICelebration = {
+const DefaultCelebration: ICelebration = {
     Id: 0,
     Who: "",
     CelebrationType: CelebrationType.Birthday,
@@ -19,4 +19,4 @@ const NewCelebration: ICelebration = {
     Note: ""
 };
 
-export {NewCelebration};
+export {DefaultCelebration};

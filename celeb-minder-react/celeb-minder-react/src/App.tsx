@@ -5,7 +5,7 @@ import CelebrationList from "./components/CelebrationList/CelebrationList";
 import Footer from "./components/Footer/Footer";
 import "./styles/global.less";
 import "./styles/icons.less";
-import { NewCelebration, type ICelebration } from "./types/ICelebration";
+import { DefaultCelebration, type ICelebration } from "./types/ICelebration";
 import { CelebrationType } from "./types/CelebrationTypeEnum";
 import { Repeat } from "./types/RepeatEnum";
 import { sortCelebrationsByDate } from "./helpers/sortHelpers";
@@ -67,11 +67,11 @@ function App() {
   ];
 
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [celebration, setCelebration] = useState<ICelebration>(NewCelebration);
+  const [celebration, setCelebration] = useState<ICelebration>(DefaultCelebration);
   const [celebrations, setCelebrations] = useState<ICelebration[]>(sortCelebrationsByDate(celebrationsMock));
 
   const setToCreateMode = () => {
-    setCelebration(NewCelebration);
+    setCelebration(DefaultCelebration);
     setIsEdit(false);
   }
 
