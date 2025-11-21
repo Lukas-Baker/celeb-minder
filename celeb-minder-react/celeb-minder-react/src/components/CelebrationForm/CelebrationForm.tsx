@@ -6,7 +6,7 @@ import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
 import "react-datepicker/dist/react-datepicker.css";
 import { dateFormat } from "../../helpers/dateHelpers";
-import SaveCelebrationBtn from "../SaveCelebrationBtn/SaveCelebrationBtn";
+import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
 import celebrationStateContext from "../../contexts/CelebrationStateContext";
 import { useContext } from "react";
@@ -23,7 +23,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
     if (celebrationContext.isEdit) {
         formButtons = (
             <>
-            <SaveCelebrationBtn celebration={celebration} />
+            <EditCelebrationBtn celebration={celebration} />
             <CancelEditCelebrationBtn />
             </>
         )

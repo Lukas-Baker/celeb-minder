@@ -1,5 +1,5 @@
-import { FaEdit } from "react-icons/fa";
-import type { ICelebration } from "../../types/ICelebration";
+import { FaSave } from "react-icons/fa";
+import { type ICelebration } from "../../types/ICelebration";
 import { useContext } from "react";
 import celebrationStateContext from "../../contexts/CelebrationStateContext";
 
@@ -10,13 +10,14 @@ interface EditCelebrationBtnProps {
 const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration}) => {
     const celebrationContext = useContext(celebrationStateContext);
 
-    function onEditBtnClick(): void {
-        celebrationContext.loadCelebrationToForm(celebration);
+    function onSaveBtnClick(): void {
+        celebrationContext.editCelebration(celebration);
+        celebrationContext.setToCreateMode();
     }
 
     return (
-        <div onClick={onEditBtnClick} className="icon"><FaEdit className="iconSvg" /></div>
-    );
+        <div onClick={onSaveBtnClick} className="icon"><FaSave className="iconSvg" /></div>
+    )
 }
 
 export default EditCelebrationBtn;

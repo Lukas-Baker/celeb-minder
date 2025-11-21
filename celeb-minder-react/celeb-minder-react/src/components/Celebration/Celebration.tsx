@@ -2,7 +2,7 @@ import type { ICelebration } from "../../types/ICelebration";
 import styles from "./Celebration.module.less";
 import { getCelebrationName } from "../../types/CelebrationTypeEnum";
 import { dateToString, isWithinFourWeeks, isWithingAWeek } from "../../helpers/dateHelpers";
-import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
+import LoadCelebrationToFormBtn from "../LoadCelebrationToFormBtn/LoadCelebrationToFormBtn";
 import DeleteCelebrationBtn from "../DeleteCelebrationBtn/DeleteCelebrationBtn";
 
 interface Props {
@@ -30,7 +30,7 @@ function Celebration({celebration}: Props) {
                 </div>
                 <div className="col-4 text-end">
                     <div className="icons">
-                        <EditCelebrationBtn celebration={celebration} />
+                        <LoadCelebrationToFormBtn celebration={celebration} />
                         <DeleteCelebrationBtn celebration={celebration} />
                     </div>
                 </div>
