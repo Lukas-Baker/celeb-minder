@@ -7,14 +7,14 @@ type CelebrationState = {
     setToCreateMode: () => void;
 }
 
+function throwNoProviderError() {
+    throw new Error("Function of a context was called outside of provider");
+}
+
 const celebrationStateContext = createContext<CelebrationState>({
     isEdit: false,
-    setToEditMode: () => {
-        throw new Error("setToEditMode called outside of Provider");
-    },
-    setToCreateMode: () => {
-        throw new Error("setToEditMode called outside of Provider");
-    }
+    setToEditMode: () => throwNoProviderError(),
+    setToCreateMode: () => throwNoProviderError(),
 });
 
 export default celebrationStateContext;
