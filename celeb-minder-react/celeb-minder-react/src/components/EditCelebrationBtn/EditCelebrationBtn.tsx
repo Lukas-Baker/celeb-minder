@@ -8,12 +8,11 @@ interface EditCelebrationBtnProps {
     setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>,
 }
 
-const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration, setCelebration}) => {
+const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration}) => {
     const celebrationContext = useContext(celebrationStateContext);
 
     function onEditBtnClick(): void {
-        setCelebration(celebration);
-        celebrationContext.setIsEdit(true);
+        celebrationContext.setToEditMode(celebration);
     }
 
     return (

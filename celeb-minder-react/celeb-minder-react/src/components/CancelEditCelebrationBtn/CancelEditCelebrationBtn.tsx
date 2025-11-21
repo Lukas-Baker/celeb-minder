@@ -1,18 +1,12 @@
-import { useContext, type SetStateAction } from "react";
-import { NewCelebration, type ICelebration } from "../../types/ICelebration";
+import { useContext } from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import celebrationStateContext from "../../contexts/CelebrationStateContext";
 
-interface CancelEditCelebrationBtnProps {
-    setCelebration: React.Dispatch<SetStateAction<ICelebration>>;
-}
-
-const CancelEditCelebrationBtn: React.FC<CancelEditCelebrationBtnProps> = ({setCelebration}) => {
+const CancelEditCelebrationBtn = () => {
     const celebrationContext = useContext(celebrationStateContext);
 
     function onCancelBtnClick() {
-        setCelebration(NewCelebration);
-        celebrationContext.setIsEdit(false);
+        celebrationContext.setToCreateMode();
     }
 
     return (

@@ -25,13 +25,12 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
         formButtons = (
             <>
             <SaveCelebrationBtn celebration={celebration}
-                                setCelebrations={setCelebrations}
-                                setCelebration={setCelebration} />
-            <CancelEditCelebrationBtn setCelebration={setCelebration} />
+                                setCelebrations={setCelebrations} />
+            <CancelEditCelebrationBtn />
             </>
         )
     } else {
-        formButtons = <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} setCelebration={setCelebration} />
+        formButtons = <AddCelebrationBtn celebration={celebration} setCelebrations={setCelebrations} />
     }
 
     return (

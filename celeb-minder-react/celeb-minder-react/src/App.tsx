@@ -70,13 +70,23 @@ function App() {
   const [celebration, setCelebration] = useState<ICelebration>(NewCelebration);
   const [celebrations, setCelebrations] = useState<ICelebration[]>(sortCelebrationsByDate(celebrationsMock));
 
+  const setToCreateMode = () => {
+    setCelebration(NewCelebration);
+    setIsEdit(false);
+  }
+
+  const setToEditMode = (editedCelebration: ICelebration) => {
+    setCelebration(editedCelebration);
+    setIsEdit(true);
+  }
+
   return (
     <div id="Celebminder" className="container">
       <div className="row">
         <Banner />
       </div>
       <div className="row">
-        <CelebrationStateContext.Provider value={{isEdit, setIsEdit}}>
+        <CelebrationStateContext.Provider value={{isEdit, setToEditMode, setToCreateMode}}>
           <div className="col-12 col-lg-6">
             <CelebrationForm celebration={celebration}
                             setCelebration={setCelebration}

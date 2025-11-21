@@ -1,14 +1,19 @@
 import { createContext } from "react";
+import type { ICelebration } from "../types/ICelebration";
 
 type CelebrationState = {
     isEdit: boolean;
-    setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
+    setToEditMode: (celebration: ICelebration) => void;
+    setToCreateMode: () => void;
 }
 
 const celebrationStateContext = createContext<CelebrationState>({
     isEdit: false,
-    setIsEdit: () => {
-        throw new Error("setIsEdit called outside of Provider");
+    setToEditMode: () => {
+        throw new Error("setToEditMode called outside of Provider");
+    },
+    setToCreateMode: () => {
+        throw new Error("setToEditMode called outside of Provider");
     }
 });
 
