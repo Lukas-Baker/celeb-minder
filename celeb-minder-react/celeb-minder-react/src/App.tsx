@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Banner from "./components/Banner/Banner";
-import CelebrationForm from "./components/CelebrationForm/CelebrationForm";
-import CelebrationList from "./components/CelebrationList/CelebrationList";
-import Footer from "./components/Footer/Footer";
+import Banner from "./features/banner/Banner";
+import CelebrationForm from "./features/celebrations/components/CelebrationForm/CelebrationForm";
+import CelebrationList from "./features/celebrations/components/CelebrationList/CelebrationList";
+import Footer from "./features/footer/Footer";
 import "./styles/global.less";
 import "./styles/icons.less";
-import { DefaultCelebration, type ICelebration } from "./types/ICelebration";
-import { CelebrationType } from "./types/CelebrationTypeEnum";
-import { Repeat } from "./types/RepeatEnum";
+import { DefaultCelebration, type ICelebration } from "./features/celebrations/types/ICelebration";
+import { CelebrationType } from "./features/celebrations/types/CelebrationTypeEnum";
+import { Repeat } from "./features/celebrations/types/RepeatEnum";
 import { sortCelebrationsByDate } from "./helpers/sortHelpers";
-import CelebrationStateContext from "./contexts/CelebrationStateContext";
+import CelebrationStateContext from "./features/celebrations/contexts/CelebrationStateContext";
 
 function App() {
   const celebrationsMock: ICelebration[] = [

@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import { type ICelebration } from '../../types/ICelebration';
-import celebrationStateContext from '../../contexts/CelebrationStateContext';
+import celebrationStateContext from "../../contexts/CelebrationStateContext";
 import { useContext } from 'react';
 
 interface AddCelebrationBtnProps {

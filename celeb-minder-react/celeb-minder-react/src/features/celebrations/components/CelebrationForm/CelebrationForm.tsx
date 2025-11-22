@@ -5,7 +5,7 @@ import { Repeat } from "../../types/RepeatEnum";
 import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
 import "react-datepicker/dist/react-datepicker.css";
-import { dateFormat } from "../../helpers/dateHelpers";
+import { dateFormat } from "../../../../helpers/dateHelpers";
 import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
 import celebrationStateContext from "../../contexts/CelebrationStateContext";
