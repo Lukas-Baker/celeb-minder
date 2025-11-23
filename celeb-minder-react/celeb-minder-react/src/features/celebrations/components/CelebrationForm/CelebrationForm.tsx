@@ -1,6 +1,5 @@
 import DatePicker from "react-datepicker";
 import { CelebrationType } from "../../types/CelebrationTypeEnum";
-import type { ICelebration } from "../../types/ICelebration";
 import { Repeat } from "../../types/RepeatEnum";
 import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
@@ -8,19 +7,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import { dateFormat } from "../../../../helpers/dateHelpers";
 import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
-import celebrationStateContext from "../../contexts/CelebrationStateContext";
-import { useContext } from "react";
+import { useCelebrations } from "../../hooks/useCelebrations";
 
-interface CelebrationFormProps {
-  celebration: ICelebration;
-  setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
-}
-
-const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebration}) => {
-    const celebrationContext = useContext(celebrationStateContext);
+const CelebrationForm = () => {
+    const {isEdit, celebration, setCelebration} = useCelebrations();
 
     let formButtons;
-    if (celebrationContext.isEdit) {
+    if (isEdit) {
         formButtons = (
             <>
             <EditCelebrationBtn celebration={celebration} />
@@ -33,7 +26,7 @@ const CelebrationForm: React.FC<CelebrationFormProps> = ({celebration, setCelebr
 
     return (
         <div className={`mb-4 ${styles.form}`}>
-            <h2 className="text-center">{celebrationContext.isEdit ? "Edit celebration" : "New celebration"}</h2>
+            <h2 className="text-center">{isEdit ? "Edit celebration" : "New celebration"}</h2>
             <form>
                 <div className="mb-3">
                     <label htmlFor="inputWho" className="form-label">Who</label>

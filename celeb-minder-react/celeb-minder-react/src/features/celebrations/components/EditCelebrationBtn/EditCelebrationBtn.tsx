@@ -1,18 +1,17 @@
 import { FaSave } from "react-icons/fa";
 import { type ICelebration } from "../../types/ICelebration";
-import { useContext } from "react";
-import celebrationStateContext from "../../contexts/CelebrationStateContext";
+import { useCelebrations } from "../../hooks/useCelebrations";
 
 interface EditCelebrationBtnProps {
     celebration: ICelebration;
 }
 
 const EditCelebrationBtn : React.FC<EditCelebrationBtnProps> = ({celebration}) => {
-    const celebrationContext = useContext(celebrationStateContext);
+    const { editCelebration, setToCreateMode } = useCelebrations();
 
     function onSaveBtnClick(): void {
-        celebrationContext.editCelebration(celebration);
-        celebrationContext.setToCreateMode();
+        editCelebration(celebration);
+        setToCreateMode();
     }
 
     return (

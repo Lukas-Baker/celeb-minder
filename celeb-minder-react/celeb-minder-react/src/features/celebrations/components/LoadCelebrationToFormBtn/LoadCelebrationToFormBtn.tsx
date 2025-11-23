@@ -1,17 +1,16 @@
 import { FaEdit } from "react-icons/fa";
 import type { ICelebration } from "../../types/ICelebration";
-import { useContext } from "react";
-import celebrationStateContext from "../../contexts/CelebrationStateContext";
+import { useCelebrations } from "../../hooks/useCelebrations";
 
 interface LoadCelebrationToFormProps {
     celebration: ICelebration;
 }
 
 const LoadCelebrationToFormBtn : React.FC<LoadCelebrationToFormProps> = ({celebration}) => {
-    const celebrationContext = useContext(celebrationStateContext);
+    const { loadCelebrationToForm } = useCelebrations();
 
     function onEditBtnClick(): void {
-        celebrationContext.loadCelebrationToForm(celebration);
+        loadCelebrationToForm(celebration);
     }
 
     return (

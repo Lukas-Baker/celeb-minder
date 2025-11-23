@@ -1,20 +1,19 @@
 import { FaPlus } from 'react-icons/fa';
 import { type ICelebration } from '../../types/ICelebration';
-import celebrationStateContext from "../../contexts/CelebrationStateContext";
-import { useContext } from 'react';
+import { useCelebrations } from '../../hooks/useCelebrations';
 
 interface AddCelebrationBtnProps {
   celebration: ICelebration;
 }
 
 const AddCelebrationBtn: React.FC<AddCelebrationBtnProps> = ({celebration}) => {
-    const celebrationContext = useContext(celebrationStateContext);
+    const {addCelebration, setToCreateMode} = useCelebrations();
 
     function onAddBtnClick(): void {
       // TBD LP: Add it to the API
       // TBD LP: Add confirm window (maybe a component?)
-      celebrationContext.addCelebration(celebration);
-      celebrationContext.setToCreateMode();
+      addCelebration(celebration);
+      setToCreateMode();
     }
 
     return (

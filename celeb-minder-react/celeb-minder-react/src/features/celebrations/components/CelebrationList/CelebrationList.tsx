@@ -1,12 +1,10 @@
-import type { ICelebration } from "../../types/ICelebration";
+import { useCelebrations } from "../../hooks/useCelebrations";
 import Celebration from "../Celebration/Celebration";
 import styles from "./CelebrationList.module.less";
 
-interface CelebrationListProps {
-    celebrations: ICelebration[];
-}
+const CelebrationList = () => {
+    const { celebrations } = useCelebrations();
 
-const CelebrationList : React.FC<CelebrationListProps> = ({celebrations}) => {
     return (
         <div className={styles.celebrationListWrapper}>
             <h2 className="text-center">Upcoming celebrations</h2>

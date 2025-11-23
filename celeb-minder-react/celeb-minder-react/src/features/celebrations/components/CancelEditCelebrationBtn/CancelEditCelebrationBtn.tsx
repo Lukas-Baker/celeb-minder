@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { FaTimesCircle } from "react-icons/fa";
-import celebrationStateContext from "../../contexts/CelebrationStateContext";
+import { useCelebrations } from "../../hooks/useCelebrations";
 
 const CancelEditCelebrationBtn = () => {
-    const celebrationContext = useContext(celebrationStateContext);
+    const {setToCreateMode} = useCelebrations();
 
     function onCancelBtnClick() {
-        celebrationContext.setToCreateMode();
+        setToCreateMode();
     }
 
     return (
