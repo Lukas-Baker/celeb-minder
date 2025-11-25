@@ -96,13 +96,15 @@ const useCelebrationsState = () => {
     setCelebrations(prev => prev.filter(c => c.Id !== toDelete.Id));
   };
 
+  const setCelebrationFromForm = (celebration: ICelebration) => {
+    setCelebration(celebration);
+  }
+
   return {
     isEdit,
     celebration,
     celebrations,
-    setIsEdit,
-    setCelebration,
-    setCelebrations,
+    setCelebrationFromForm,
     setToCreateMode,
     loadCelebrationToForm,
     addCelebration,

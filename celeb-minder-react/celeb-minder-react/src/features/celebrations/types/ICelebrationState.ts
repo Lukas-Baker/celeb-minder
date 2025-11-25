@@ -5,10 +5,7 @@ export type ICelebrationState = {
   celebration: ICelebration;
   celebrations: ICelebration[];
 
-  setIsEdit: React.Dispatch<React.SetStateAction<boolean>>;
-  setCelebration: React.Dispatch<React.SetStateAction<ICelebration>>;
-  setCelebrations: React.Dispatch<React.SetStateAction<ICelebration[]>>;
-
+  setCelebrationFromForm: (celebration: ICelebration) => void;
   setToCreateMode: () => void;
   loadCelebrationToForm: (editedCelebration: ICelebration) => void;
   addCelebration: (newCelebration: ICelebration) => void;

@@ -4,7 +4,7 @@ import { Repeat } from "./RepeatEnum";
 export interface ICelebration {
     Id: number;
     Who: string;
-    CelebrationType: number;
+    CelebrationType: number | null;
     When: Date;
     Repeat: number;
     Note?: string;
@@ -13,7 +13,7 @@ export interface ICelebration {
 const DefaultCelebration: ICelebration = {
     Id: 0,
     Who: "",
-    CelebrationType: CelebrationType.Birthday,
+    CelebrationType: CelebrationType.Default,
     When: new Date(),
     Repeat: Repeat.Never,
     Note: ""
