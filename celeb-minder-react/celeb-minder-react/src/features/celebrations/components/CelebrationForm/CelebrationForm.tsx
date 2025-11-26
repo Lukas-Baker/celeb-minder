@@ -21,6 +21,8 @@ const CelebrationForm = () => {
     const [celebrationTypeValid, setCelebrationTypeValid] = useState<boolean|null>(null);
     const [when, setWhen] = useState<Date|null>(null);
     const [whenValid, setWhenValid] = useState<boolean|null>(null);
+    const [repeat, setRepeat] = useState<string>("");
+    const [repeatValid, setRepeatValid] = useState<boolean|null>(null);
 
     // helper methods
     const getValidationClass = (valid: boolean|null) => {
@@ -47,6 +49,11 @@ const CelebrationForm = () => {
     const validateAndSetWhen = (when: Date|null) => {
         setWhen(when);
         setWhenValid(when !== null)
+    }
+
+    const validateAndSetRepeat = (repeat: string) => {
+        setRepeat(repeat);
+        setRepeatValid(repeat !== "");
     }
 
     let formButtons;
@@ -88,7 +95,7 @@ const CelebrationForm = () => {
                     </select>
                     <ValidationMessage isValid={celebrationTypeValid}
                                        validMessage={
-                                           <>Do you have an idea what to give <strong>{who === "" ? "?" : who}</strong> to
+                                           <>Do you have any idea what to give <strong>{who === "" ? "?" : who}</strong> to
                                            <strong> {celebrationType && getCelebrationName(parseInt(celebrationType))}</strong>?</>
                                        }
                                        invalidMessage={<>I would like to know what kind of <strong>celebration type</strong> it is! Just tell me...</>} />
@@ -104,7 +111,7 @@ const CelebrationForm = () => {
                                        validMessage={
                                         <>So it's happening on <strong>{dateToString(when)}</strong>! You know what I mean...
                                         <strong> {celebrationType === "" ? "?" : getCelebrationName(parseInt(celebrationType)) }</strong>
-                                        ...<strong>{who === "" ? "?" : who}</strong></>
+                                        {" ... "}<strong>{who === "" ? "?" : who}</strong></>
                                        }
                                        invalidMessage={
                                         <>Cmoooon! I need to know <strong>when</strong> the
@@ -113,15 +120,21 @@ const CelebrationForm = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputRepeat" className="form-label">Repeat</label>
-                    <select value={celebration.Repeat} onChange={e => setCelebrationFromForm({ ...celebration, Repeat: parseInt(e.target.value) })}
-                        id="inputRepeat" className="form-control">
+                    <select value={repeat}
+                            onChange={e => validateAndSetRepeat(e.target.value)}
+                            className={`form-control ${getValidationClass(repeatValid)}`}
+                            id="inputRepeat">
                         {
                             Object.entries(Repeat).map(([label, value]) => (
-                            <option key={value} value={value}>
-                                {label}
+                            <option key={value === null ? -1 : value} value={value ?? ""}>
+                                {value === null ? "-" : label}
                             </option>
                         ))}
                     </select>
+                    <ValidationMessage isValid={repeatValid}
+                                       validMessage={<>I am going to remember this!</>}
+                                       invalidMessage={<>Bzzp bzzzp, information about <strong>Repeat</strong> is bzzp ... mandatory.</>}
+                     />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="noteInput" className="form-label">Note</label>
