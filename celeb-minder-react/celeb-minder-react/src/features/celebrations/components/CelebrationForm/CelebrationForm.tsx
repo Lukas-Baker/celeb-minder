@@ -4,7 +4,7 @@ import { Repeat } from "../../types/RepeatEnum";
 import AddCelebrationBtn from "../AddCelebrationBtn/AddCelebrationBtn";
 import styles from "./CelebrationForm.module.less";
 import "react-datepicker/dist/react-datepicker.css";
-import { dateFormat } from "../../../../helpers/dateHelpers";
+import { dateFormat, dateToString } from "../../../../helpers/dateHelpers";
 import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
 import { useCelebrations } from "../../hooks/useCelebrations";
@@ -19,6 +19,8 @@ const CelebrationForm = () => {
     const [whoValid, setWhoValid] = useState<boolean|null>(null);
     const [celebrationType, setCelebrationType] = useState<string>("");
     const [celebrationTypeValid, setCelebrationTypeValid] = useState<boolean|null>(null);
+    const [when, setWhen] = useState<Date|null>(null);
+    const [whenValid, setWhenValid] = useState<boolean|null>(null);
 
     // helper methods
     const getValidationClass = (valid: boolean|null) => {
@@ -40,6 +42,11 @@ const CelebrationForm = () => {
     const validateAndSetCelebrationType = (celebrationType: string) => {
         setCelebrationType(celebrationType);
         setCelebrationTypeValid(celebrationType !== "");
+    }
+
+    const validateAndSetWhen = (when: Date|null) => {
+        setWhen(when);
+        setWhenValid(when !== null)
     }
 
     let formButtons;
@@ -90,9 +97,19 @@ const CelebrationForm = () => {
                     <label htmlFor="inputWhen" className="form-label">When</label>
                     <DatePicker dateFormat={dateFormat}
                                 id="inputWhen"
-                                className="form-control"
-                                selected={celebration.When}
-                                onChange={(date) => setCelebrationFromForm({ ...celebration, When: date ?? new Date() })} />
+                                className={`form-control ${getValidationClass(whenValid)}`}
+                                selected={when}
+                                onChange={(date) => validateAndSetWhen(date)} />
+                    <ValidationMessage isValid={whenValid}
+                                       validMessage={
+                                        <>So it's happening on <strong>{dateToString(when)}</strong>! You know what I mean...
+                                        <strong> {celebrationType === "" ? "?" : getCelebrationName(parseInt(celebrationType)) }</strong>
+                                        ...<strong>{who === "" ? "?" : who}</strong></>
+                                       }
+                                       invalidMessage={
+                                        <>Cmoooon! I need to know <strong>when</strong> the
+                                        <strong> {celebrationType === "" ? "?" : getCelebrationName(parseInt(celebrationType)) }</strong> happens.</>
+                                       } />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputRepeat" className="form-label">Repeat</label>

@@ -9,3 +9,9 @@
     display: block;
     width: 100%;
 }
+
+// Bootstrap + React-Datepicker would make the validations invisible without this
+.react-datepicker-wrapper + .valid-feedback,
+.react-datepicker-wrapper + .invalid-feedback {
+    display: block !important;
+}

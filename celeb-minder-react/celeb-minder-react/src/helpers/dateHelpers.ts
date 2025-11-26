@@ -20,4 +20,4 @@ export const isWithinFourWeeks = (dateToCheck: Date): boolean => {
 
 export const dateFormat: string = "dd.MM.YYYY";
 
-export const dateToString = (date: Date): string => date.toLocaleDateString("de-CH");
+export const dateToString = (date: Date|null): string => date !== null ? date.toLocaleDateString("de-CH") : "";
