@@ -8,13 +8,14 @@ import { dateFormat, dateToString } from "../../../../helpers/dateHelpers";
 import EditCelebrationBtn from "../EditCelebrationBtn/EditCelebrationBtn";
 import CancelEditCelebrationBtn from "../CancelEditCelebrationBtn/CancelEditCelebrationBtn";
 import { useCelebrations } from "../../hooks/useCelebrations";
-import { DefaultCelebration } from "../../types/ICelebration";
-import { useState } from "react";
+import { DefaultCelebration, type ICelebration } from "../../types/ICelebration";
+import { useEffect, useState } from "react";
 import ValidationMessage from "../ValidationMessage/ValidationMessage";
+import type { ICelebrationFormData } from "../../types/ICelebrationFormData";
 
 const CelebrationForm = () => {
     // states
-    const {isEdit, celebration, setCelebrationFromForm} = useCelebrations();
+    const {isEdit, celebration} = useCelebrations();
     const [who, setWho] = useState<string>(DefaultCelebration.Who);
     const [whoValid, setWhoValid] = useState<boolean|null>(null);
     const [celebrationType, setCelebrationType] = useState<string>("");
@@ -23,6 +24,17 @@ const CelebrationForm = () => {
     const [whenValid, setWhenValid] = useState<boolean|null>(null);
     const [repeat, setRepeat] = useState<string>("");
     const [repeatValid, setRepeatValid] = useState<boolean|null>(null);
+    const [isFormValid, setIsFormValid] = useState<boolean>(false);
+    const [note, setNote] = useState<string>("");
+
+    useEffect(() => {
+        setIsFormValid(
+            whoValid === true &&
+            celebrationTypeValid === true &&
+            whenValid === true &&
+            repeatValid === true
+        );
+    }, [whoValid, celebrationTypeValid, whenValid, repeatValid]);
 
     // helper methods
     const getValidationClass = (valid: boolean|null) => {
@@ -35,7 +47,37 @@ const CelebrationForm = () => {
         }
     }
 
-    // validation methods
+    const getCelebrationFromForm = () => {
+        return {
+            Id: celebration.Id,
+            Who: who,
+            CelebrationType: parseInt(celebrationType),
+            When: when!,
+            Repeat: parseInt(repeat),
+            Note: note,
+        }
+    }
+
+    const setCelebrationToForm = (celebration: ICelebration) => {
+        setWho(celebration.Who);
+        setWhoValid(null);
+        setCelebrationType(celebration.CelebrationType?.toString() ?? "");
+        setCelebrationTypeValid(null);
+        setWhen(celebration.When);
+        setWhenValid(null);
+        setRepeat(celebration.Repeat?.toString() ?? "");
+        setRepeatValid(null);
+        setNote(celebration.Note ?? "");
+    }
+
+    const getCelebrationFormData = (): ICelebrationFormData => {
+        return {
+                celebration: getCelebrationFromForm(),
+                isValid: isFormValid,
+                setCelebrationToForm
+        };
+    }
+
     const validateAndSetWho = (who: string) => {
         setWho(who);
         setWhoValid(who.length > 0);
@@ -48,7 +90,7 @@ const CelebrationForm = () => {
 
     const validateAndSetWhen = (when: Date|null) => {
         setWhen(when);
-        setWhenValid(when !== null)
+        setWhenValid(when !== null);
     }
 
     const validateAndSetRepeat = (repeat: string) => {
@@ -60,12 +102,12 @@ const CelebrationForm = () => {
     if (isEdit) {
         formButtons = (
             <>
-            <EditCelebrationBtn celebration={celebration} />
+            <EditCelebrationBtn getCelebrationFormData={getCelebrationFormData} />
             <CancelEditCelebrationBtn />
             </>
         )
     } else {
-        formButtons = <AddCelebrationBtn celebration={celebration} />
+        formButtons = <AddCelebrationBtn getCelebrationFormData={getCelebrationFormData} />
     }
 
     return (
@@ -82,7 +124,7 @@ const CelebrationForm = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputCelebrationType" className="form-label">Celebration type</label>
-                    <select value={celebrationType ?? DefaultCelebration.CelebrationType}
+                    <select value={celebrationType}
                             onChange={e => validateAndSetCelebrationType(e.target.value)}
                             id="inputCelebrationType"
                             className={`form-control ${getValidationClass(celebrationTypeValid)}`}>
@@ -138,7 +180,7 @@ const CelebrationForm = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="noteInput" className="form-label">Note</label>
-                    <textarea value={celebration.Note} onChange={e => setCelebrationFromForm({ ...celebration, Note: e.target.value })}
+                    <textarea value={note} onChange={e => setNote(e.target.value)}
                         id="noteInput" className="form-control" />
                 </div>
                 <div className="text-center">
