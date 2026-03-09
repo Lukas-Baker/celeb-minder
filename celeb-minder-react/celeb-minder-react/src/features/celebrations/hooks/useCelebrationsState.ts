@@ -3,6 +3,7 @@ import { DefaultCelebration, type ICelebration } from "../types/ICelebration";
 import { sortCelebrationsByDate } from "../../../helpers/sortHelpers";
 import { CelebrationType } from "../types/CelebrationTypeEnum";
 import { Repeat } from "../types/RepeatEnum";
+import { setToStartOfTheDay } from "../../../helpers/dateHelpers";
 
 const celebrationsMock: ICelebration[] = [
     {
@@ -75,7 +76,13 @@ const useCelebrationsState = () => {
     setIsEdit(true);
   };
 
+  const sanitizeCelebration = (celebration: ICelebration): ICelebration => {
+    celebration.When = setToStartOfTheDay(celebration.When);
+    return celebration;
+  }
+
   const addCelebration = (newCelebration: ICelebration) => {
+    newCelebration = sanitizeCelebration(newCelebration);
     setCelebrations(prev => {
       newCelebration.Id =
         prev.length !== 0 ? Math.max(...prev.map(c => c.Id)) + 1 : 1;
@@ -84,6 +91,7 @@ const useCelebrationsState = () => {
   };
 
   const editCelebration = (editedCelebration: ICelebration) => {
+    editedCelebration = sanitizeCelebration(editedCelebration);
     setCelebrations(prev => {
       const updated = prev.map(c =>
         c.Id === celebration.Id ? editedCelebration : c

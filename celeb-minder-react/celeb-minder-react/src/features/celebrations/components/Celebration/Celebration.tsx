@@ -1,7 +1,7 @@
 import type { ICelebration } from "../../types/ICelebration";
 import styles from "./Celebration.module.less";
 import { getCelebrationName } from "../../types/CelebrationTypeEnum";
-import { dateToString, isWithinFourWeeks, isWithingAWeek } from "../../../../helpers/dateHelpers";
+import { dateToString, isWithinFourWeeks, isWithinAWeek } from "../../../../helpers/dateHelpers";
 import LoadCelebrationToFormBtn from "../LoadCelebrationToFormBtn/LoadCelebrationToFormBtn";
 import DeleteCelebrationBtn from "../DeleteCelebrationBtn/DeleteCelebrationBtn";
 
@@ -11,7 +11,7 @@ interface Props {
 
 function Celebration({celebration}: Props) {
     function getUrgencyClass(date: Date): string {
-        if (isWithingAWeek(date)) {
+        if (isWithinAWeek(date)) {
             return styles.celebrationDanger;
         } else if (isWithinFourWeeks(date)) {
             return styles.celebrationWarning;
