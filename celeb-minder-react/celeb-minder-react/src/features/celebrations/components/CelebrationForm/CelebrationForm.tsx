@@ -28,24 +28,28 @@ const CelebrationForm = () => {
     const [note, setNote] = useState<string>("");
 
     useEffect(() => {
-        setIsFormValid(
-            whoValid === true &&
+        let isFormValid: boolean = false;
+
+        if (isEdit) {
+            isFormValid = (whoValid === true || whoValid === null) &&
+                (celebrationTypeValid === true || celebrationTypeValid === null) &&
+                (whenValid === true || whenValid === null) &&
+                (repeatValid === true || repeatValid === null)
+        } else {
+            isFormValid = whoValid === true &&
             celebrationTypeValid === true &&
-            whenValid === true &&
+            (whenValid === true || whenValid === null) && // when has a default valid value
             repeatValid === true
+        }
+
+        setIsFormValid(
+            isFormValid
         );
-    }, [whoValid, celebrationTypeValid, whenValid, repeatValid]);
+    }, [whoValid, celebrationTypeValid, whenValid, repeatValid, isEdit]);
 
     // register the change of celebration from outside and set it to the form when edit
     useEffect(() => {
         setCelebrationToForm(celebration);
-
-        if (isEdit) {
-            setWhoValid(true);
-            setCelebrationTypeValid(true);
-            setWhenValid(true);
-            setRepeatValid(true);
-        }
     }, [celebration, isEdit]);
 
     // helper methods
