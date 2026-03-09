@@ -62,7 +62,7 @@ const useCelebrationsState = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [celebration, setCelebration] = useState(DefaultCelebration);
   const [celebrations, setCelebrations] = useState(
-    sortCelebrationsByDate(celebrationsMock)
+    sortCelebrationsByDate(celebrationsMock.filter(c => c.When >= new Date()))
   );
 
   const setToCreateMode = () => {
