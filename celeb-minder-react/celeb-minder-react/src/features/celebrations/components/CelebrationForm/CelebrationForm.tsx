@@ -36,6 +36,18 @@ const CelebrationForm = () => {
         );
     }, [whoValid, celebrationTypeValid, whenValid, repeatValid]);
 
+    // register the change of celebration from outside and set it to the form when edit
+    useEffect(() => {
+        setCelebrationToForm(celebration);
+
+        if (isEdit) {
+            setWhoValid(true);
+            setCelebrationTypeValid(true);
+            setWhenValid(true);
+            setRepeatValid(true);
+        }
+    }, [celebration, isEdit]);
+
     // helper methods
     const getValidationClass = (valid: boolean|null) => {
         if (valid === null) {
