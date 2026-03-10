@@ -5,9 +5,10 @@ import { DefaultCelebration } from '../../types/ICelebration';
 
 interface AddCelebrationBtnProps {
   getCelebrationFormData: () => ICelebrationFormData;
+  forceValidation: () => void;
 }
 
-const AddCelebrationBtn: React.FC<AddCelebrationBtnProps> = ({getCelebrationFormData}) => {
+const AddCelebrationBtn: React.FC<AddCelebrationBtnProps> = ({getCelebrationFormData, forceValidation}) => {
     const {addCelebration, setToCreateMode} = useCelebrations();
     const {isValid, celebration, setCelebrationToForm} = getCelebrationFormData();
 
@@ -19,7 +20,7 @@ const AddCelebrationBtn: React.FC<AddCelebrationBtnProps> = ({getCelebrationForm
         setCelebrationToForm(DefaultCelebration);
         setToCreateMode();
       } else {
-            console.log("onAddBtnClick was called but form data was invalid");
+            forceValidation();
       }
     }
 

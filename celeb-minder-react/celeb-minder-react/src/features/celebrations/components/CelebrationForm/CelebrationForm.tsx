@@ -114,6 +114,13 @@ const CelebrationForm = () => {
         setRepeatValid(repeat !== "");
     }
 
+    // make from valid = null -> valid = false
+    const forceValidation = () => {
+        setWhoValid(whoValid === true ? true : false);
+        setCelebrationTypeValid(celebrationTypeValid === true ? true : false);
+        setRepeatValid(repeatValid === true ? true : false);
+    }
+
     let formButtons;
     if (isEdit) {
         formButtons = (
@@ -123,7 +130,7 @@ const CelebrationForm = () => {
             </>
         )
     } else {
-        formButtons = <AddCelebrationBtn getCelebrationFormData={getCelebrationFormData} />
+        formButtons = <AddCelebrationBtn getCelebrationFormData={getCelebrationFormData} forceValidation={forceValidation}  />
     }
 
     return (
